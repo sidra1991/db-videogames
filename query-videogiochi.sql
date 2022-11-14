@@ -52,18 +52,46 @@
 
 
 --8- Selezionare tutte le recensioni con voto compreso tra 2 e 4 (2947)
+--SELECT *
+--FROM reviews
+--WHERE rating >= 2
+--AND rating <= 4
 
 
 
 --9- Selezionare tutti i dati dei videogiochi rilasciati nell'anno 2020 (46)
+--SELECT * 
+--FROM videogames
+--WHERE release_date <'2020-12-31'
+--AND release_date >'2020-01-01'
 
---10- Selezionare gli id dei videogame che hanno ricevuto almeno una recensione da stelle, mostrandoli una sola volta (443)
+
+
+--10- Selezionare gli id dei videogame che hanno ricevuto almeno una recensione da 5 stelle, mostrandoli una sola volta (443)
+--SELECT count(videogame_id)
+--FROM reviews
+--INNER JOIN videogames
+--ON reviews.videogame_id = videogames.id
+--WHERE rating =5
+--GROUP BY videogame_id
+
 
 --*********** BONUS ***********
 
 --11- Selezionare il numero e la media delle recensioni per il videogioco con ID = 412 (review number = 12, avg_rating = 3)
+--SELECT count(id),AVG(rating)
+--FROM reviews
+--WHERE videogame_id = 412
+
 
 --12- Selezionare il numero di videogame che la software house con ID = 1 ha rilasciato nel 2018 (13
+--SELECT count(videogames.id)
+--FROM videogames
+--INNER JOIN software_houses
+--ON software_houses.id = videogames.software_house_id
+--WHERE software_house_id = 1
+--AND videogames.release_date <= '2018-12-31'
+--AND videogames.release_date >= '2018-01-01'
 
 
 --QUERY CON GROUPBY
